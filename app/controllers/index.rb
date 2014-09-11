@@ -11,3 +11,7 @@ post '/' do
   end
 end
 
+get '/logout' do 
+  session[:current_user] = nil
+  redirect '/'
+end
