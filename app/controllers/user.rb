@@ -1,6 +1,3 @@
-require 'rest_client'
-require 'json'
-
 
 get '/user/new' do 
   erb :signup
@@ -12,29 +9,27 @@ post '/user/new' do
   redirect "/user/#{this_user.id}"
 end
 
-# ---- DON'T FORGET --- ADD 'if sessions...' later to check if logged in
-
 get '/user/:id/events' do 
-  @user=User.find(params[:id])
-  @users_events=@user.events
-  erb :my_events
-end
-
-delete '/user/:id/events' do 
-  @user=User.find(params[:id])
-#  ????
-  attending_event = UserEvent.find_by(user_id: @user.id, event_id:@user.events.first ) #totally not right, just something to be a placeholder for now, come back to it
-  attending_event.destroy # ... if trash icon clicked
+  if session[:current_user]
+    @user=User.find(params[:id])
+    @users_events=@user.events
+    erb :my_events
+  else 
+    redirect '/'
+  end
 end
 
 get '/user/:id' do 
-  @user=User.find(params[:id])
-
-  erb :profile
+  if session[:current_user]
+    @user=User.find(params[:id])
+    erb :profile
+  else 
+    redirect '/'
+  end
 end
 
 post '/user/:id' do 
-  # ------API call using form params -------
+  
   address=params[:address].strip
   address=address.gsub(" ", "+")
 
@@ -47,7 +42,7 @@ post '/user/:id' do
   lng = map_json_reply["results"][0]["geometry"]["location"]["lng"]
 
   latlng = "#{lat},#{lng}"
-  p nyt_api_key = ENV['NY_TIMES_KEY'] # works with the actual API key here but not with the env
+  p nyt_api_key = ENV['NY_TIMES_KEY'] 
   nyt_api_request = "http://api.nytimes.com/svc/events/v2/listings.json?ll=#{latlng}&radius=8000&sort=dist+asc&api-key=#{nyt_api_key}"
   events_json_response = JSON.load( RestClient.get( nyt_api_request ) )
 
@@ -64,8 +59,7 @@ post '/user/:id' do
 
   @search_events = []
   events.each do |event|
-    Event.find_or_create_by(name: event[:name], location: event[:location], description: event[:description], time: event[:time]) 
-    @search_events << event
+    @search_events << Event.find_or_create_by(name: event[:name], location: event[:location], description: event[:description], time: event[:time]) 
   end
  
   @search_events.to_json

@@ -1,15 +1,10 @@
 <h1>My Events</h1>
-<% if @user_events %>
-  <% @user_events.each do |event| %>
-    <form action='/user/<%=@user.id%>/events' method='post'>
-    <input type='hidden' name='_method' value='delete'>
-      <div id='users_events_listed'>
+<% if @users_events.count >= 1 %>
+  <% @users_events.each do |event| %>
         <div id='single_user_event'>
-          <%="#{event.name} --- happenin' at --- #{event.time}" %>
-        </div>
-        <button><span class="glyphicon glyphicon-trash"></span>Delete</button>
+          <%="#{event.name} ------ #{event.time}" %>
+        <a href="/event/<%= event.id %>"><button><span class="glyphicon glyphicon-plus"></span> View/Delete</button></a>
       </div>
-    </form>
   <% end %>
 <% else %>
 <h3>You don't have any events yet!</h3>

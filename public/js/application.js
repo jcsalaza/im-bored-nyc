@@ -1,5 +1,5 @@
 var searchListView = function(object) {
-  return ("<li><h3 id ='event_name'>"+object['name']+"</h3><br>"+object['description']+"</li><button id='view_event_button' class='btn btn-default btn-lg'><span class='glyphicon glyphicon-plus'></span>View/Add Event</button>") ;
+  return ("<div id='event_search_item'><li><h3 id ='event_name'>"+object['name']+"</h3><br>"+object['description']+"</li><a href='/event/"+object['id']+"'><button id='view_event_button' class='btn btn-default btn-lg'><span class='glyphicon glyphicon-plus'></span>View/Add Event</button></a></div>") ;
 }
 
 $(document).ready(function() {
@@ -16,7 +16,6 @@ $(document).ready(function() {
 
   $('#user_search_bar').on('submit', function(event) {
     event.preventDefault();
-    // $('#whats_happenin_btn').html('Loading...');
   
     $.ajax({
       type: 'POST',

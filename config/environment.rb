@@ -14,6 +14,7 @@ require 'pathname'
 require 'pg'
 require 'active_record'
 require 'logger'
+require 'rest_client'
 
 require 'sinatra'
 require "sinatra/reloader" if development?
@@ -23,7 +24,6 @@ require 'erb'
 require 'bcrypt'
 require 'json'
 require 'rest-client'
-require 'rest_client'
 require 'pry'
 require 'dotenv'
 Dotenv.load

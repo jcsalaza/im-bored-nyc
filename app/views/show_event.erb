@@ -1,6 +1,11 @@
 <% if @user_has_event == false %>
-  <form action='event/<%= @event.id %>' method='post'>
+  <form action='/event/<%= @event.id %>' method='post'>
     <input type='submit' value='Add Event to My Events'>
+  </form>
+<% else %>
+  <form action='/event/<%= @event.id %>' method='post'>
+    <input type='hidden' name='_method' value='delete'>
+    <input type='submit' value='Delete Event from My Events'>
   </form>
 <% end %>
 
