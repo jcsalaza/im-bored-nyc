@@ -18,6 +18,7 @@ gem 'shotgun'
 gem 'bcrypt'
 gem 'rest-client'
 gem 'json'
+gem 'dotenv'
 
 group :test do
   gem 'shoulda-matchers'

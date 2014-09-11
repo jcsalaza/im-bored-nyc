@@ -3,7 +3,14 @@
   <input  type='submit' value="What's Going On?">
 </form>
 <div id='event_search_list'>
-  <ul>
-    <li id='event_search_item'></li>
-  </ul>
+  <% if @search_events %>
+    <ul>
+    <% @search_events.each do |event| %>
+      <div id='event_search_item'>
+        <li><h3 id ='event_name'><%= event[:name] %></h3><br><%= event[:description] %></li><a href="/event/<%= event.id %>"><button class="btn btn-default btn-lg"><span class="glyphicon glyphicon-plus"></span>View/Add Event</button></a>  <!-- maybe could add the event somehow in application.js-->
+      </div>
+      <% end %>
+    </ul>
+  <% end %>
+  <!-- maybe a submit button here and have checkboxes instead of the 'add' buttons ? -->
 </div>

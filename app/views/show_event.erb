@@ -1,0 +1,12 @@
+<% unless @user.events.find(@event.id) %>
+  <form action='event/<%= @event.id %>' method='post'>
+    <input type='submit' value='Add Event to My Events'>
+  </form>
+<% end %>
+
+<div id='event_info'>
+  <p><strong>Name:</strong> <%= @event.name %></p>
+  <p><strong>Time:</strong> <%= @event.time %></p>
+  <p><strong>Location:</strong> <%= @event.location %></p>
+  <p><strong>Description:</strong></p><br> <%= @event.description %>
+</div>

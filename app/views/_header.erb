@@ -1,3 +1,7 @@
-<a href="/user/<%= @user.id %>"><div>Home</div></a>
-<a href="/user/<%= @user.id %>/events"><div>My Events</div></a>
-<a href="/logout"><div>Log Out</div></a>
+<nav class="navbar navbar-default navbar-static-top">
+  <ul class="nav nav-pills">
+    <li id='home'><a href="/user/<%= @user.id %>"><div>Home</div></a></li>
+    <li id='myevents'><a href="/user/<%= @user.id %>/events"><div>My Events</div></a></li>
+    <li id='logout'><a href="/logout"><div>Log Out</div></a></li>
+  </ul>
+</nav>

@@ -1,7 +1,16 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  var pathArray = window.location.pathname.split('/');
+  if (pathArray[pathArray.length - 1] === 'logout') {
+  $('li#logout').addClass("active"); 
+  }
+  else if (pathArray[pathArray.length - 1] === 'events') {
+  $('li#myevents').addClass("active"); 
+  }
+  else {
+  $('li#home').addClass("active");
+  }
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+
+// still need to add ajax for displaying the list of events
+
 });

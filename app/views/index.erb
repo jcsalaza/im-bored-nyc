@@ -1,10 +1,13 @@
-<h1>I'm Bored NYC</h1>
-<h2>Find something to do!</h2>
-
-<form action='/' method='post'>
-  <input type='text' name='email' placeholder='Email'>
-  <input type='text' name='password' placeholder='Password'>
-  <input type='submit' value='Log In'>
-</form>
-<h3>OR</h3>
-<a href="/user/new"><button id='sign_up'>Create an account</button></a>
+<div class='jumbotron' id='frontpage'>
+  <h1>I'm Bored NYC</h1>
+  <h2>Find something to do!</h2>
+  <div class="input-group">
+  <form action='/' method='post'>
+    <input type='text' name='email' placeholder='Email' class="form-control">
+    <input type='text' name='password' placeholder='Password' class="form-control">
+    <input type='submit' value='Log In' class="btn btn-default">
+  </form>
+  <br><br><br>
+  <a href="/user/new" class="btn btn-primary btn-lg" role="button">Create an account</a>
+  </div>
+</div>
