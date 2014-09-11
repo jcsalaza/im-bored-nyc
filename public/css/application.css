@@ -1,0 +1,9 @@
+#frontpage {
+  background-image: url('new-york-city.jpeg');
+  width: 100%;
+  height: auto;
+}
+
+#event_search_list {
+  display: none;
+}
