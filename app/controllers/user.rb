@@ -1,6 +1,7 @@
 require 'rest_client'
 require 'json'
 
+
 get '/user/new' do 
   erb :signup
 end
@@ -46,7 +47,7 @@ post '/user/:id' do
   lng = map_json_reply["results"][0]["geometry"]["location"]["lng"]
 
   latlng = "#{lat},#{lng}"
-  nyt_api_key = "#{ENV['NY_TIMES_KEY']}" # works with the actual API key here but not with the env
+  p nyt_api_key = ENV['NY_TIMES_KEY'] # works with the actual API key here but not with the env
   nyt_api_request = "http://api.nytimes.com/svc/events/v2/listings.json?ll=#{latlng}&radius=8000&sort=dist+asc&api-key=#{nyt_api_key}"
   events_json_response = JSON.load( RestClient.get( nyt_api_request ) )
 
@@ -58,18 +59,16 @@ post '/user/:id' do
     event[:description] = result["web_description"] #remember!!! this has <p> tags
     event[:time] = result["date_time_description"]
 
-    events << event
+    events << event    
   end
 
   @search_events = []
-  @search_events_2 = []
   events.each do |event|
-    @search_events << Event.find_or_create_by(name: event[:name], location: event[:location], description: event[:description], time: event[:time]) 
-    @search_events_2 << event
+    Event.find_or_create_by(name: event[:name], location: event[:location], description: event[:description], time: event[:time]) 
+    @search_events << event
   end
-#  ---------------------------------
-  # js_events = @search_events_2.to_json
-  # js_events
+ 
+  @search_events.to_json
 end
 
 

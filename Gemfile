@@ -19,6 +19,7 @@ gem 'bcrypt'
 gem 'rest-client'
 gem 'json'
 gem 'dotenv'
+gem 'pry'
 
 group :test do
   gem 'shoulda-matchers'

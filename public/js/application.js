@@ -1,3 +1,7 @@
+var searchListView = function(object) {
+  return ("<li><h3 id ='event_name'>"+object['name']+"</h3><br>"+object['description']+"</li><button id='view_event_button' class='btn btn-default btn-lg'><span class='glyphicon glyphicon-plus'></span>View/Add Event</button>") ;
+}
+
 $(document).ready(function() {
   var pathArray = window.location.pathname.split('/');
   if (pathArray[pathArray.length - 1] === 'logout') {
@@ -10,7 +14,29 @@ $(document).ready(function() {
   $('li#home').addClass("active");
   }
 
-
+  $('#user_search_bar').on('submit', function(event) {
+    event.preventDefault();
+    // $('#whats_happenin_btn').html('Loading...');
+  
+    $.ajax({
+      type: 'POST',
+      url: '/user/' + pathArray[pathArray.length - 1],
+      data: $(this).serialize(),
+      dataType: 'json',
+      success: function (result) {
+        console.log(result);
+        result.forEach( function (object) {
+          $('#event_search_list').append(searchListView(object));
+        })
+        $('#event_search_list').show();
+      },
+      error: function(error) {
+        console.log(error);
+        $('event_search_list').html('Whoops! No results for that area.');
+      } 
+    })
+  })
+    
 // still need to add ajax for displaying the list of events
 
 });
