@@ -35,7 +35,5 @@ $(document).ready(function() {
       } 
     })
   })
-    
-// still need to add ajax for displaying the list of events
 
 });

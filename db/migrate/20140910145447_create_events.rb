@@ -10,6 +10,3 @@ class CreateEvents < ActiveRecord::Migration
     end
   end
 end
-
-# maybe add specific fields for time (I believe it's in description) and whether or not it's a free event
-
