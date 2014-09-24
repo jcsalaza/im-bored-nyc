@@ -5,4 +5,4 @@ I'm new to NYC, and, though I've been busy with DBC, I've been trying to find th
 
 "I'm Bored NYC" is an app that shows all events going on near you in the NYC area and allows you to save the events to your profile.
 
-Enjoy!
+Enjoy! [I'm Bored NYC](imborednyc.herokuapp.com)
