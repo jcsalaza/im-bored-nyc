@@ -42,7 +42,7 @@ post '/user/:id' do
   lng = map_json_reply["results"][0]["geometry"]["location"]["lng"]
 
   latlng = "#{lat},#{lng}"
-  p nyt_api_key = ENV['NY_TIMES_KEY'] 
+  nyt_api_key = ENV['NY_TIMES_KEY'] 
   nyt_api_request = "http://api.nytimes.com/svc/events/v2/listings.json?ll=#{latlng}&radius=8000&sort=dist+asc&api-key=#{nyt_api_key}"
   events_json_response = JSON.load( RestClient.get( nyt_api_request ) )
 
