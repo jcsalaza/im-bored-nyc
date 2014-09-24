@@ -18,9 +18,8 @@ gem 'shotgun'
 gem 'bcrypt'
 gem 'rest-client'
 gem 'json'
-# gem 'dotenv'
+gem 'dotenv'
 gem 'pry'
-gem 'thin'
 
 
 group :test do
