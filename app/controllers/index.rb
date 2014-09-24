@@ -4,14 +4,14 @@ get '/' do
 end
 
 post '/' do 
-  user_logging_in=User.find_by(params[:email])
+  user_logging_in=User.find_by(email: params[:email])
   if user_logging_in.authenticate(params[:password])
     session[:current_user]=user_logging_in.id
-    redirect "/user/#{user_logging_in.id}"
+    redirect "/user/#{session[:current_user]}"
   end
 end
 
 get '/logout' do 
-  session[:current_user] = nil
+  session.clear
   redirect '/'
 end
