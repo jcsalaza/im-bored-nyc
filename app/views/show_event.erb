@@ -12,7 +12,7 @@
 <div id='event_info'>
   <p><strong>Name:</strong> <%= @event.name %></p>
   <p><strong>Time:</strong> <%= @event.time %></p>
-  <% unless @event.location == " in , "%>
+  <% unless @event.location == "   in ,  "%>
   <p><strong>Location:</strong> <%= @event.location %></p>
   <% end %>
   <p><strong>Description:</strong></p><br> <%= @event.description %>
